@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
+import StoreProvider from './context/StoreProvider';
+import Main from './Main';
 
 function App() {
+
   return (
-    <div>Oi</div>
+    <StoreProvider>
+      <Main />
+    </StoreProvider>
   );
 }
 
