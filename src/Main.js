@@ -1,16 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-Main.propTypes = {
-  
-};
+import React, { useContext } from 'react';
+import propTypes from 'prop-types';
+import NavCategories from './componentes/NavCategories';
 
 
 function Main() {
 
   return (
-    <div></div>
+    <NavCategories />
   );
 }
+
+Main.propTypes = {
+  
+};
 
 export default Main;
