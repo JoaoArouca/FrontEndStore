@@ -6,6 +6,8 @@ import { getCategories } from '../services/getAPI';
 function StoreProvider({ children }) {
   // Hooks
   const [results, setResults] = useState([]);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
 
   useEffect(() => {
@@ -22,6 +24,10 @@ function StoreProvider({ children }) {
   const global = {
     results,
     setResults,
+    email,
+    setEmail,
+    password,
+    setPassword,
   };
 
 
