@@ -8,8 +8,15 @@ function StoreProvider({ children }) {
   const [results, setResults] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [search, setSearch] = useState('');
+  const [product, setProduct] = useState([]);
+
+  const handleInputChange = ({ target }) => {
+    setSearch(target.value);
+  };
 
 
+// requisição da api de categorias
   useEffect(() => {
     const getResults = async () => {
       const resultado = await getCategories();
@@ -28,6 +35,10 @@ function StoreProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    handleInputChange,
+    search,
+    product,
+    setProduct,
   };
 
 

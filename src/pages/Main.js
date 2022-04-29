@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import NavCategories from '../componentes/NavCategories';
+import Header from '../componentes/Header';
 
 
 function Main() {
 
   return (
     <div>
-      <NavCategories />
+      <Header />
     </div>
   );
 }

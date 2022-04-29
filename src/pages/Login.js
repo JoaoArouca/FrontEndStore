@@ -51,12 +51,11 @@ function Login() {
         onChange={ (e) => validPass(e) }
       />
       <button
-        type="button"
+        type="submit"
         disabled={ disableButton }
         onClick={ handleCLick }
       >
         Entrar
-
       </button>
     </form>
   );
