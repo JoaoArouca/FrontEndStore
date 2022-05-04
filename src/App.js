@@ -4,6 +4,7 @@ import Main from './pages/Main';
 import { Route, Routes } from 'react-router-dom';
 import Teste from './pages/Teste';
 import Login from './pages/Login';
+import Adress from './pages/Adress';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route exact path='/' element={ <Login /> } />
         <Route exact path='/main' element={ <Main /> } />
         <Route exact path='/categorie/:id' element={ <Teste /> } />
+        <Route exact path='/adress' element={ <Adress /> } />
       </Routes>
     </StoreProvider>
   );

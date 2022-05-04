@@ -8,13 +8,18 @@ function NavCategories(props) {
 
   const { results }  = useContext(Storecontext);
 
+
+  const navClass = {
+    textDecoration: 'none', // retira o sublinhado das tag Link HTML
+  };
+
   return (
     <div>
       {
         <nav>
           {
             results.map((categorie) => 
-            <Link key={ categorie.name } to={ `/categorie/${ categorie.id }` } >{ categorie.name }</Link>
+            <Link style={ navClass } key={ categorie.name } to={ `/categorie/${ categorie.id }` } >{ categorie.name }</Link>
             )
           } 
         </nav>
