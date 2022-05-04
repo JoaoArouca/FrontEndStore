@@ -10,6 +10,8 @@ function StoreProvider({ children }) {
   const [password, setPassword] = useState('');
   const [search, setSearch] = useState('');
   const [product, setProduct] = useState([]);
+  const [location, setLocation] = useState([]);
+  const [cep, setCep] = useState('');
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
@@ -39,6 +41,10 @@ function StoreProvider({ children }) {
     search,
     product,
     setProduct,
+    location,
+    setLocation,
+    cep,
+    setCep,
   };
 
 
