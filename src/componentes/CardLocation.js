@@ -1,31 +1,24 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Storecontext from '../context/StoreContext';
 import { ReactComponent as LocationIcon } from '../icons/LocationIcon.svg';
 import { Link } from 'react-router-dom';
 
 
-function CardLocation() {
+function CardLocation({ loc }) {
+
   const { location } = useContext(Storecontext);
-  
-  const showLoc = () => {
-    if (location.length > 0) {
-      return <span>{ `${ location.localidade }-${ location.uf }` }</span>;
-    } else {
-      return <span>...</span>;
-    }
+
+  const locationClass = {
+    textDecoration: 'none', // retira o sublinhado das tag Link HTML
   };
 
   return (
-    <Link to='/adress'>
+    <Link to='/adress' style={ locationClass } >
       <LocationIcon />
       <span>Enviar para</span>
-      {/* {
-        location.length > 0 ? <span>{ `${ location.localidade }-${ location.uf }` }</span> : '...'
-      } */}
       {
-        showLoc()
-      }
-          
+        Object.keys(location).length > 1 ? <span>{ `  ${ location.localidade }-${ location.uf }` }</span> : <span>{ '  (insira um endereço)' }</span>
+      }    
     </Link> 
     
 

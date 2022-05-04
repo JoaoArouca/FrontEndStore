@@ -15,6 +15,7 @@ function Header() {
     return product;
   };
 
+
   return (
     <div>
       <NavCategories />
