@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Teste from './pages/Teste';
 import Login from './pages/Login';
 import Adress from './pages/Adress';
+import './App.css';
 
 function App() {
 

@@ -1,0 +1,12 @@
+.container {
+  display: flex,
+}
+
+.header {
+  justify-content: space-around
+}
+
+.nav {
+  text-align: center;
+  background-color: brown;
+}

@@ -17,7 +17,7 @@ function Header() {
 
 
   return (
-    <div>
+    <header className="container header">
       <NavCategories />
       <form>
         <input // formulário de pesquisa
@@ -33,7 +33,7 @@ function Header() {
         </button>
       </form>
       <CardLocation />
-    </div>
+    </header>
   );
 }
 
