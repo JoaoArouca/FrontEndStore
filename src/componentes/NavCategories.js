@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import Storecontext from '../context/StoreContext';
 import { Link } from 'react-router-dom';
-
+import { ReactComponent as Menu3 } from '../icons/Menu3.svg';
+import { ReactComponent as Menu4 } from '../icons/Menu4.svg';
 
 
 function NavCategories(props) {
@@ -26,9 +27,9 @@ function NavCategories(props) {
     <div>
       {
         xxx ?
-        <span onClick={ handleClick }>x</span> :
+        <Menu3  onClick={ handleClick } /> :
           <nav>
-            <span onClick={ handleClick }>x</span>
+            <Menu4  onClick={ handleClick } />
             {
               results.map((categorie) =>
               <div>
