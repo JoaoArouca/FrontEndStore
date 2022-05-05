@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import propTypes from 'prop-types';
 import Storecontext from './StoreContext';
-import { getCategories } from '../services/getAPI';
+import { getCategories, getProducts } from '../services/getAPI';
 
 function StoreProvider({ children }) {
   // Hooks
-  const [results, setResults] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [search, setSearch] = useState('');
-  const [product, setProduct] = useState([]);
-  const [location, setLocation] = useState([]);
-  const [cep, setCep] = useState('');
+  const [results, setResults] = useState([]); // resultados da api de categorias
+  const [email, setEmail] = useState(''); // email de login
+  const [password, setPassword] = useState(''); // senha do usuaŕio, para validação
+  const [search, setSearch] = useState(''); // string da barra de pesquisa
+  const [product, setProduct] = useState([]); // resultado da api de produtos por id
+  const [location, setLocation] = useState([]); // resultado da api de CEp -  endereços
+  const [cep, setCep] = useState(''); // cep inserido pelo usuário
+  const [user, setUser] = useState(''); // nome de usuário
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
@@ -27,8 +27,13 @@ function StoreProvider({ children }) {
 
     getResults();
   }, [])
-  
-  
+
+// requisição da api de produtos 
+  const fetchProducts = async (search) => {
+    const productsList = await getProducts(search);
+    setProduct(productsList.results);
+  };
+
   
   const global = {
     results,
@@ -45,6 +50,9 @@ function StoreProvider({ children }) {
     setLocation,
     cep,
     setCep,
+    user,
+    setUser,
+    fetchProducts,
   };
 
 
@@ -55,9 +63,5 @@ function StoreProvider({ children }) {
     </Storecontext.Provider>
   );
 }
-
-StoreProvider.propTypes = {
-  children: propTypes.arrayOf(propTypes.element).isRequired,
-};
 
 export default StoreProvider;

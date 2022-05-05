@@ -1,12 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
-  display: flex,
+  display: flex;
 }
 
 .header {
-  justify-content: space-around
+  justify-content: space-between;
+  /* background-color: #fff159; */
 }
 
-.nav {
-  text-align: center;
-  background-color: brown;
+.navCard {
+  width: auto;
+}
+
+.navCard:hover {
+  background-color: darkgray;
+}
+
+.profileCard {
+  width: 25%;
+}
+
+.locationCard {
+  width: 25%;
+}
+.inputSearch {
+  width: 25%;
+}
+
+.sectionHeader {
+  justify-content:space-around;
+  flex-grow: 1;
+}
+
+.productSection {
+  flex-wrap: wrap;
+  border: 1px black;
+}
+
+.productCard {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  border: black solid 1px;
+  margin: 10px;
 }

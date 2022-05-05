@@ -15,10 +15,6 @@ function NavCategories(props) {
     textDecoration: 'none', // retira o sublinhado das tag Link HTML
   };
 
-  const navClass = {
-    width: '250px',
-  }
-
   const handleClick = () => {
     if (showNav === true) {
       setNav(false);
@@ -31,12 +27,12 @@ function NavCategories(props) {
     <div>
       {
         showNav ? // quando o mouse passa sobre a Tag nav é renderizado as categorias
-          <nav style={ navClass } onMouseEnter={ handleClick }> 
+          <nav className='navCard' onMouseEnter={ handleClick }> 
             <span>Categorias</span>
             <Menu3 />
           </nav>
            :
-          <nav style={ navClass } onMouseLeave={ handleClick }>
+          <nav className='navCard' onMouseLeave={ handleClick }>
             <span>Categorias</span>
             <Menu4 />
             {
