@@ -9,6 +9,7 @@ function Adress() {
   const [showCep, setShowCep] = useState(false);
   const navigate = useNavigate();
 
+
   // armazena o valor digitado no input dentro do hook
   const handleInput = ({ target }) => { 
     setCep(target.value);
@@ -65,7 +66,7 @@ function Adress() {
       </form> : 
 
       <div>
-        <span>{ `Seu endereço é ${ location.localidade } - ${ location.uf }` }</span>
+        <span>{ `Seu endereço é: ${location.logradouro}, ${ location.bairro }, ${ location.localidade } - ${ location.uf }` }</span>
 
         <button
           type='button'
