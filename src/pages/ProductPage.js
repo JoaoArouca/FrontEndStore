@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // método para pegar o Params no react router v6
 
-function Teste() {
+function ProductPage() {
 
   const { id } = useParams();
 
+  useEffect(() => {
+    console.log('oi');
+  }, [])
+
   return (
     <div>
-      { id }
+      hello
     </div>
   );
 }
 
-export default Teste;
+export default ProductPage;

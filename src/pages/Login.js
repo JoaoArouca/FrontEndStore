@@ -27,7 +27,7 @@ function Login() {
 
 // função do click
   const handleCLick = () => {
-    setStorage('user', email); // função para armazenar infos no localStorage
+    setStorage('email', email); // função para armazenar infos no localStorage
     navigate('/main');
   }
 

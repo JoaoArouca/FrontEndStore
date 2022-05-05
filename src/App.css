@@ -36,3 +36,16 @@
   justify-content:space-around;
   flex-grow: 1;
 }
+
+.productSection {
+  flex-wrap: wrap;
+  border: 1px black;
+}
+
+.productCard {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  border: black solid 1px;
+  margin: 10px;
+}

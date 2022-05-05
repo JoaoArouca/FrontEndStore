@@ -1,20 +1,11 @@
 import React, { useContext } from 'react';
 import Storecontext from '../context/StoreContext';
-import { getProducts } from '../services/getAPI';
 import CardLocation from './CardLocation';
 import CardProfile from './CardProfile';
 import NavCategories from './NavCategories';
 
 function Header() {
-  const { handleInputChange, search, setProduct, product } = useContext(Storecontext);
-
-
-// Api que retorna os produtos de determinada categoria 
-  const fetch = async (search) => {
-    const productsList = await getProducts(search);
-    setProduct(productsList.results);
-    return product;
-  };
+  const { handleInputChange, search, fetchProducts } = useContext(Storecontext);
 
 
   return (
@@ -29,7 +20,7 @@ function Header() {
           />
           <button
             type='button'
-            onClick={ () => fetch(search) }
+            onClick={ async () => await fetchProducts(search) }
           >
             Pesquisar
           </button>
