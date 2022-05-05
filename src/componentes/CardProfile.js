@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as ProfileIcon } from '../icons/ProfileIcon.svg';
 
 function CardProfile() {
   return (
-    <ProfileIcon />
+    <Link to='/profile-page'>
+      <ProfileIcon />
+    </Link>
   );
 }
 

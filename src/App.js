@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import StoreProvider from './context/StoreProvider';
 import Main from './pages/Main';
 import { Route, Routes } from 'react-router-dom';
 import Teste from './pages/Teste';
 import Login from './pages/Login';
 import Adress from './pages/Adress';
+import Profile from './pages/Profile';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/main' element={ <Main /> } />
         <Route exact path='/categorie/:id' element={ <Teste /> } />
         <Route exact path='/adress' element={ <Adress /> } />
+        <Route exact path='/profile-page' element={ <Profile /> } />
       </Routes>
     </StoreProvider>
   );
