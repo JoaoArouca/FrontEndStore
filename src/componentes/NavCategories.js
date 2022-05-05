@@ -8,32 +8,41 @@ import { ReactComponent as Menu4 } from '../icons/Menu4.svg';
 function NavCategories(props) {
 
   const { results }  = useContext(Storecontext);
-  const [xxx, setxxx] = useState(true);
+  const [showNav, setNav] = useState(true);
 
 
-  const navClass = {
+  const LinkClass = {
     textDecoration: 'none', // retira o sublinhado das tag Link HTML
   };
 
+  const navClass = {
+    width: '250px',
+  }
+
   const handleClick = () => {
-    if (xxx === true) {
-      setxxx(false);
+    if (showNav === true) {
+      setNav(false);
     } else {
-      setxxx(true);
+      setNav(true);
     };
   }
 
   return (
     <div>
       {
-        xxx ?
-        <Menu3  onClick={ handleClick } /> :
-          <nav>
-            <Menu4  onClick={ handleClick } />
+        showNav ? // quando o mouse passa sobre a Tag nav é renderizado as categorias
+          <nav style={ navClass } onMouseEnter={ handleClick }> 
+            <span>Categorias</span>
+            <Menu3 />
+          </nav>
+           :
+          <nav style={ navClass } onMouseLeave={ handleClick }>
+            <span>Categorias</span>
+            <Menu4 />
             {
               results.map((categorie) =>
               <div>
-                <Link style={ navClass } key={ categorie.name } to={ `/categorie/${ categorie.id }` } >{ categorie.name }</Link>
+                <Link style={ LinkClass } key={ categorie.name } to={ `/categorie/${ categorie.id }` } >{ categorie.name }</Link>
                 <hr></hr>
               </div>
               )
