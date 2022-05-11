@@ -3,9 +3,7 @@ import CardProduct from '../componentes/CardProduct';
 import Header from '../componentes/Header';
 import { getRandomProductList } from '../services/getAPI';
 
-
 function Main() {
-
   const [list, setList] = useState([]);
 
   const getRandomList = async () => {
@@ -15,12 +13,12 @@ function Main() {
 
   useEffect(() => {
     getRandomList();
-  }, [])
+  }, []);
 
   return (
     <div>
       <Header />
-      <CardProduct data={ list } />
+      <CardProduct data={list} />
     </div>
   );
 }

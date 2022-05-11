@@ -17,24 +17,22 @@ function StoreProvider({ children }) {
     setSearch(target.value);
   };
 
-
-// requisição da api de categorias
+  // requisição da api de categorias
   useEffect(() => {
     const getResults = async () => {
       const resultado = await getCategories();
       setResults(resultado);
-    }
+    };
 
     getResults();
-  }, [])
+  }, []);
 
-// requisição da api de produtos 
+  // requisição da api de produtos
   const fetchProducts = async (search) => {
     const productsList = await getProducts(search);
     setProduct(productsList.results);
   };
 
-  
   const global = {
     results,
     setResults,
@@ -55,10 +53,8 @@ function StoreProvider({ children }) {
     fetchProducts,
   };
 
-
-
   return (
-    <Storecontext.Provider value={ global }>
+    <Storecontext.Provider value={global}>
       { children }
     </Storecontext.Provider>
   );
