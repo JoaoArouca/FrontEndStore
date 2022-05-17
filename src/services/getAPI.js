@@ -28,7 +28,6 @@ export const getRandomProductList = async () => {
     `https://api.mercadolibre.com/sites/MLB/search?category=${jsonCategories[randomNum].id}`,
   );
   const jsonList = await secondCall.json();
-  console.log(jsonList.results);
 
   return jsonList.results;
 };

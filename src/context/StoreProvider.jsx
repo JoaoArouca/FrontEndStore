@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Storecontext from './StoreContext';
 import { getCategories, getProducts } from '../services/getAPI';
 
@@ -33,7 +33,7 @@ function StoreProvider({ children }) {
     setProduct(productsList.results);
   };
 
-  const global = {
+  const global = useMemo(() => ({
     results,
     setResults,
     email,
@@ -51,7 +51,7 @@ function StoreProvider({ children }) {
     user,
     setUser,
     fetchProducts,
-  };
+  }), []);
 
   return (
     <Storecontext.Provider value={global}>

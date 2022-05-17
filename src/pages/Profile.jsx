@@ -3,12 +3,11 @@ import Storecontext from '../context/StoreContext';
 import { getStorage } from '../localStorage/localStorage';
 
 function Profile() {
-//hooks
+// hooks
   const [email, setEmail] = useState('');
 
-//Context
+  // Context
   const { user, setUser } = useContext(Storecontext);
-  console.log(user);
 
   /* const usuário = {
     name,
@@ -20,36 +19,36 @@ function Profile() {
 
   const getInfos = async () => { // função que retorna o objeto com as infos do usuário
     const userEmail = await getStorage('email');
-    
+
     setEmail(userEmail);
-  }
+  };
 
   useEffect(() => {
     getInfos();
-  }, [])
+  }, []);
 
   return (
     <section>
       <form>
         Dados da conta:
 
-        <label htmlFor='user'>
-          Usuário:  
+        <label htmlFor="user">
+          Usuário:
           <input
-            name='user'
-            type='text'
-            onChange={ (e) => { setUser(e.target.value) } }
+            name="user"
+            type="text"
+            onChange={(e) => { setUser(e.target.value); }}
           />
         </label>
-    
-        <label htmlFor='email'>
-          E-mail: 
-          <input name='email' type='email' />
+
+        <label htmlFor="email">
+          E-mail:
+          <input name="email" type="email" />
         </label>
-        
-    </form>
+
+      </form>
     </section>
-    
+
   );
 }
 
