@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Storecontext from './StoreContext';
 import { getCategories, getProducts } from '../services/getAPI';
 
@@ -17,25 +17,23 @@ function StoreProvider({ children }) {
     setSearch(target.value);
   };
 
-
-// requisição da api de categorias
+  // requisição da api de categorias
   useEffect(() => {
     const getResults = async () => {
       const resultado = await getCategories();
       setResults(resultado);
-    }
+    };
 
     getResults();
-  }, [])
+  }, []);
 
-// requisição da api de produtos 
+  // requisição da api de produtos
   const fetchProducts = async (search) => {
     const productsList = await getProducts(search);
     setProduct(productsList.results);
   };
 
-  
-  const global = {
+  const global = useMemo(() => ({
     results,
     setResults,
     email,
@@ -53,12 +51,10 @@ function StoreProvider({ children }) {
     user,
     setUser,
     fetchProducts,
-  };
-
-
+  }), []);
 
   return (
-    <Storecontext.Provider value={ global }>
+    <Storecontext.Provider value={global}>
       { children }
     </Storecontext.Provider>
   );

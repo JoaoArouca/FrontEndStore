@@ -7,20 +7,19 @@ import NavCategories from './NavCategories';
 function Header() {
   const { handleInputChange, search, fetchProducts } = useContext(Storecontext);
 
-
   return (
     <header className="container header">
       <NavCategories />
-      <section className='sectionHeader container'>
+      <section className="sectionHeader container">
         <form>
           <input // formulário de pesquisa
-            type='text'
-            placeholder='Buscar produtos, marcas e muito mais...'
-            onChange={ handleInputChange }
+            type="text"
+            placeholder="Buscar produtos, marcas e muito mais..."
+            onChange={handleInputChange}
           />
           <button
-            type='button'
-            onClick={ async () => await fetchProducts(search) }
+            type="button"
+            onClick={async () => fetchProducts(search)}
           >
             Pesquisar
           </button>
@@ -28,7 +27,7 @@ function Header() {
         <CardLocation />
         <CardProfile />
       </section>
-      
+
     </header>
   );
 }

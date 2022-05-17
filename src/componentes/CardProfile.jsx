@@ -4,7 +4,7 @@ import { ReactComponent as ProfileIcon } from '../icons/ProfileIcon.svg';
 
 function CardProfile() {
   return (
-    <Link to='/profile-page'>
+    <Link to="/profile-page">
       <ProfileIcon />
     </Link>
   );
