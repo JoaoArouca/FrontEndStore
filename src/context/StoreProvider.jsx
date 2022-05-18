@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Storecontext from './StoreContext';
 import { getCategories, getProducts } from '../services/getAPI';
 
@@ -32,7 +33,6 @@ function StoreProvider({ children }) {
   const fetchProducts = async (searchInput) => {
     const productsList = await getProducts(searchInput);
     setProduct(productsList.results);
-    console.log(product);
   };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -64,5 +64,9 @@ function StoreProvider({ children }) {
     </Storecontext.Provider>
   );
 }
+
+StoreProvider.propTypes = {
+  children: PropTypes.objectOf(Object).isRequired,
+};
 
 export default StoreProvider;

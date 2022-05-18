@@ -2,6 +2,7 @@
 // camelCase disabled because the api returns an object named in underline_case
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function CardProduct({ data }) {
   return (
@@ -29,5 +30,9 @@ function CardProduct({ data }) {
     </section>
   );
 }
+
+CardProduct.propTypes = {
+  data: PropTypes.arrayOf(Object).isRequired,
+};
 
 export default CardProduct;
