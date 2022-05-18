@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Storecontext from './StoreContext';
 import { getCategories, getProducts } from '../services/getAPI';
 
@@ -8,10 +8,11 @@ function StoreProvider({ children }) {
   const [email, setEmail] = useState(''); // email de login
   const [password, setPassword] = useState(''); // senha do usuaŕio, para validação
   const [search, setSearch] = useState(''); // string da barra de pesquisa
-  const [product, setProduct] = useState([]); // resultado da api de produtos por id
+  const [product, setProduct] = useState([]); // resultado da api de produtos
   const [location, setLocation] = useState([]); // resultado da api de CEp -  endereços
   const [cep, setCep] = useState(''); // cep inserido pelo usuário
   const [user, setUser] = useState(''); // nome de usuário
+  const [list, setList] = useState([]); // produtos listados na main
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
@@ -27,13 +28,15 @@ function StoreProvider({ children }) {
     getResults();
   }, []);
 
-  // requisição da api de produtos
-  const fetchProducts = async (search) => {
-    const productsList = await getProducts(search);
+  // requisição da api de produtos na barra de busca
+  const fetchProducts = async (searchInput) => {
+    const productsList = await getProducts(searchInput);
     setProduct(productsList.results);
+    console.log(product);
   };
 
-  const global = useMemo(() => ({
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const global = {
     results,
     setResults,
     email,
@@ -51,7 +54,9 @@ function StoreProvider({ children }) {
     user,
     setUser,
     fetchProducts,
-  }), []);
+    list,
+    setList,
+  };
 
   return (
     <Storecontext.Provider value={global}>

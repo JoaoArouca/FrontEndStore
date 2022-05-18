@@ -49,3 +49,11 @@
   border: black solid 1px;
   margin: 10px;
 }
+
+.imgClass {
+  width: 80px;
+}
+
+.linkClass {
+  text-decoration: none;
+}

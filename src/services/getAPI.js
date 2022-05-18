@@ -4,7 +4,7 @@ export const getCategories = async () => { // retornas as categorias dos produto
   return json;
 };
 
-export const getProducts = async (QUERY) => { // retorna a lista de produtos a partir da categoria
+export const getProducts = async (QUERY) => { // retorna a lista de produtos a partir da categoriaID
   const call = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${QUERY}`);
   const json = await call.json();
   return json;

@@ -1,29 +1,26 @@
+/* eslint-disable camelcase */
+// camelCase disabled because the api returns an object named in underline_case
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CardProduct({ data }) {
-  const LinkClass = {
-    textDecoration: 'none', // retira o sublinhado das tag Link HTML
-  };
-
-  const imgClass = {
-    width: '80px',
-  };
-
-  console.log(data);
   return (
     <section className="container productSection">
       {
         data.length > 0
           ? data.map((product) => {
-            const { title, thumbnail, price } = product;
+            const {
+              title, thumbnail, price, id, shipping,
+            } = product;
+            const { free_shipping } = shipping;
             return (
               <div className="productCard">
-                <Link style={LinkClass} to="/" key={title}>
+                <Link className="linkClass" to={`/categorie/${id}`} key={title}>
                   <h3>{ title}</h3>
-                  <img style={imgClass} src={thumbnail} alt={title} />
+                  <img className="imgClass" src={thumbnail} alt={title} />
                   <span>{ `R$ ${price}` }</span>
                 </Link>
+                { free_shipping && <span>FRETE GRÁTIS</span> }
               </div>
 
             );
