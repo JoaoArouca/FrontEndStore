@@ -1,8 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 // camelCase disabled because the api returns an object named in underline_case
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 
 function CardDetails({ data }) {
   // Hooks
@@ -11,7 +14,7 @@ function CardDetails({ data }) {
   console.log(data);
 
   const {
-    thumbnail, thumbnail_id, title, available_quantity, attributes,
+    title, available_quantity, attributes,
     price, pictures,
   } = data; // desestrutura data
 
@@ -47,7 +50,18 @@ function CardDetails({ data }) {
       <Link to="/main">Voltar</Link>
       <div>
         <h1>{ title }</h1>
-        <img src={thumbnail} alt={thumbnail_id} />
+        {
+          pictures !== undefined
+            ? (
+              <Slider>
+                {pictures.map((slide, index) => (
+                  <div key={index}>
+                    <img src={slide.secure_url} alt={slide.id} />
+                  </div>
+                ))}
+              </Slider>
+            ) : null
+        }
         <span>
           R$
           {`${price}`}
