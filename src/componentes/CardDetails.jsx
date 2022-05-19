@@ -12,9 +12,12 @@ function CardDetails({ data }) {
 
   const {
     thumbnail, thumbnail_id, title, available_quantity, attributes,
-    price,
-  } = data;
+    price, pictures,
+  } = data; // desestrutura data
 
+  console.log(pictures);
+
+  // funções onChange
   const handleChange = ({ target }) => {
     setQuantity(target.value);
   };
@@ -28,6 +31,7 @@ function CardDetails({ data }) {
     }
   };
 
+  // regra de negócio - não é possível comprar mais do que o estoque
   const alertQuantity = () => {
     if (quantity > available_quantity) {
       alert('Quantidade não disponível em estoque');
