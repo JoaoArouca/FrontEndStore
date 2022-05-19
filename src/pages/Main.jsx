@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CardProduct from '../componentes/CardProduct';
 import Header from '../componentes/Header';
+import Storecontext from '../context/StoreContext';
 import { getRandomProductList } from '../services/getAPI';
 
 function Main() {
-  const [list, setList] = useState([]);
+  const { product, list, setList } = useContext(Storecontext);
 
   const getRandomList = async () => {
     const xx = await getRandomProductList();
@@ -18,7 +19,9 @@ function Main() {
   return (
     <div>
       <Header />
-      <CardProduct data={list} />
+      {
+        product.length ? <CardProduct data={product} /> : <CardProduct data={list} />
+      }
     </div>
   );
 }

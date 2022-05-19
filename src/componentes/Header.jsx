@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Storecontext from '../context/StoreContext';
+import CardCart from './CardCart';
 import CardLocation from './CardLocation';
 import CardProfile from './CardProfile';
 import NavCategories from './NavCategories';
@@ -19,13 +20,14 @@ function Header() {
           />
           <button
             type="button"
-            onClick={async () => fetchProducts(search)}
+            onClick={() => fetchProducts(search)}
           >
             Pesquisar
           </button>
         </form>
         <CardLocation />
         <CardProfile />
+        <CardCart />
       </section>
 
     </header>

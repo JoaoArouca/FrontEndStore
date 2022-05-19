@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Storecontext from './StoreContext';
 import { getCategories, getProducts } from '../services/getAPI';
 
@@ -8,10 +9,11 @@ function StoreProvider({ children }) {
   const [email, setEmail] = useState(''); // email de login
   const [password, setPassword] = useState(''); // senha do usuaŕio, para validação
   const [search, setSearch] = useState(''); // string da barra de pesquisa
-  const [product, setProduct] = useState([]); // resultado da api de produtos por id
+  const [product, setProduct] = useState([]); // resultado da api de produtos
   const [location, setLocation] = useState([]); // resultado da api de CEp -  endereços
   const [cep, setCep] = useState(''); // cep inserido pelo usuário
   const [user, setUser] = useState(''); // nome de usuário
+  const [list, setList] = useState([]); // produtos listados na main
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
@@ -27,13 +29,18 @@ function StoreProvider({ children }) {
     getResults();
   }, []);
 
-  // requisição da api de produtos
-  const fetchProducts = async (search) => {
-    const productsList = await getProducts(search);
-    setProduct(productsList.results);
+  // requisição da api de produtos na barra de busca
+  const fetchProducts = async (searchInput) => {
+    const productsList = await getProducts(searchInput);
+    if (productsList.results.length) {
+      setProduct(productsList.results);
+    } else {
+      alert('Nenhum Produto Encontrado');
+    }
   };
 
-  const global = useMemo(() => ({
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const global = {
     results,
     setResults,
     email,
@@ -51,7 +58,9 @@ function StoreProvider({ children }) {
     user,
     setUser,
     fetchProducts,
-  }), []);
+    list,
+    setList,
+  };
 
   return (
     <Storecontext.Provider value={global}>
@@ -59,5 +68,9 @@ function StoreProvider({ children }) {
     </Storecontext.Provider>
   );
 }
+
+StoreProvider.propTypes = {
+  children: PropTypes.objectOf(Object).isRequired,
+};
 
 export default StoreProvider;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Storecontext from '../context/StoreContext';
 import { ReactComponent as LocationIcon } from '../icons/LocationIcon.svg';
 
-function CardLocation({ loc }) {
+function CardLocation() {
   const { location } = useContext(Storecontext);
 
   const locationClass = {
