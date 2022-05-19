@@ -31,3 +31,9 @@ export const getRandomProductList = async () => {
 
   return jsonList.results;
 };
+
+export const getProductDetails = async (productId) => {
+  const call = await fetch(`https://api.mercadolibre.com/items/${productId}`);
+  const json = await call.json();
+  return json;
+};
