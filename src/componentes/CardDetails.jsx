@@ -1,24 +1,24 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 // camelCase disabled because the api returns an object named in underline_case
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
+import Storecontext from '../context/StoreContext';
 
 function CardDetails({ data }) {
   // Hooks
-  const [quantity, setQuantity] = useState(0); // quantidade de produtos selecionados
+  const { quantity, setQuantity } = useContext(Storecontext);
   const [showInput, setInputShowed] = useState(false);
-  console.log(data);
+  const { id } = useParams;
+  const navigate = useNavigate();
 
   const {
     title, available_quantity, attributes,
     price, pictures,
   } = data; // desestrutura data
-
-  console.log(pictures);
 
   // funções onChange
   const handleChange = ({ target }) => {
@@ -45,6 +45,16 @@ function CardDetails({ data }) {
     alertQuantity();
   }, [quantity]);
 
+  // funções de compra
+  const shopNow = () => {
+    console.log(id);
+    navigate('/shopping-cart');
+  };
+
+  const addToCart = () => {
+    console.log(id);
+  };
+
   return (
     <div>
       <Link to="/main">Voltar</Link>
@@ -52,7 +62,7 @@ function CardDetails({ data }) {
         <h1>{ title }</h1>
         {
           pictures !== undefined
-            ? (
+            && (
               <Slider>
                 {pictures.map((slide, index) => (
                   <div key={index}>
@@ -60,12 +70,17 @@ function CardDetails({ data }) {
                   </div>
                 ))}
               </Slider>
-            ) : null
+            )
         }
         <span>
           R$
           {`${price}`}
         </span>
+      </div>
+
+      <div>
+        <button onClick={shopNow} type="button">Comprar Agora</button>
+        <button onClick={addToCart} type="button">Adicionar ao Carrinho</button>
       </div>
 
       <div>

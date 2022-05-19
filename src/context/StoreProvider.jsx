@@ -14,6 +14,7 @@ function StoreProvider({ children }) {
   const [cep, setCep] = useState(''); // cep inserido pelo usuário
   const [user, setUser] = useState(''); // nome de usuário
   const [list, setList] = useState([]); // produtos listados na main
+  const [quantity, setQuantity] = useState(1); // quantidade de produtos selecionados
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
@@ -60,6 +61,8 @@ function StoreProvider({ children }) {
     fetchProducts,
     list,
     setList,
+    quantity,
+    setQuantity,
   };
 
   return (
