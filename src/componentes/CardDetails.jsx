@@ -1,20 +1,26 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 // camelCase disabled because the api returns an object named in underline_case
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
+import Storecontext from '../context/StoreContext';
 
 function CardDetails({ data }) {
   // Hooks
-  const [quantity, setQuantity] = useState(0); // quantidade de produtos selecionados
+  const { quantity, setQuantity } = useContext(Storecontext);
   const [showInput, setInputShowed] = useState(false);
-  console.log(data);
+  const { id } = useParams;
+  const navigate = useNavigate();
 
   const {
-    thumbnail, thumbnail_id, title, available_quantity, attributes,
-    price,
-  } = data;
+    title, available_quantity, attributes,
+    price, pictures,
+  } = data; // desestrutura data
 
+  // funções onChange
   const handleChange = ({ target }) => {
     setQuantity(target.value);
   };
@@ -28,6 +34,7 @@ function CardDetails({ data }) {
     }
   };
 
+  // regra de negócio - não é possível comprar mais do que o estoque
   const alertQuantity = () => {
     if (quantity > available_quantity) {
       alert('Quantidade não disponível em estoque');
@@ -38,16 +45,42 @@ function CardDetails({ data }) {
     alertQuantity();
   }, [quantity]);
 
+  // funções de compra
+  const shopNow = () => {
+    console.log(id);
+    navigate('/shopping-cart');
+  };
+
+  const addToCart = () => {
+    console.log(id);
+  };
+
   return (
     <div>
       <Link to="/main">Voltar</Link>
       <div>
         <h1>{ title }</h1>
-        <img src={thumbnail} alt={thumbnail_id} />
+        {
+          pictures !== undefined
+            && (
+              <Slider>
+                {pictures.map((slide, index) => (
+                  <div key={index}>
+                    <img src={slide.secure_url} alt={slide.id} />
+                  </div>
+                ))}
+              </Slider>
+            )
+        }
         <span>
           R$
           {`${price}`}
         </span>
+      </div>
+
+      <div>
+        <button onClick={shopNow} type="button">Comprar Agora</button>
+        <button onClick={addToCart} type="button">Adicionar ao Carrinho</button>
       </div>
 
       <div>
