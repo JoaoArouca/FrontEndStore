@@ -15,7 +15,7 @@ function CardProduct({ data }) {
             } = product;
             const { free_shipping } = shipping;
             return (
-              <div className="productCard">
+              <div key={id} className="productCard">
                 <Link className="linkClass" to={`/categorie/${id}`} key={title}>
                   <h3>{ title}</h3>
                   <img className="imgClass" src={thumbnail} alt={title} />

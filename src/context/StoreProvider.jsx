@@ -32,7 +32,11 @@ function StoreProvider({ children }) {
   // requisição da api de produtos na barra de busca
   const fetchProducts = async (searchInput) => {
     const productsList = await getProducts(searchInput);
-    setProduct(productsList.results);
+    if (productsList.results.length) {
+      setProduct(productsList.results);
+    } else {
+      alert('Nenhum Produto Encontrado');
+    }
   };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
