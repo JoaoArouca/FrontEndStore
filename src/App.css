@@ -57,3 +57,13 @@
 .linkClass {
   text-decoration: none;
 }
+
+.mainProduct {
+  flex-wrap: wrap;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

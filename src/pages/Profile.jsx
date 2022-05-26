@@ -5,9 +5,9 @@ import { getStorage } from '../localStorage/localStorage';
 function Profile() {
 // hooks
   const [email, setEmail] = useState('');
-
   // Context
   const { user, setUser } = useContext(Storecontext);
+  console.log(user, email);
 
   /* const usuário = {
     name,
