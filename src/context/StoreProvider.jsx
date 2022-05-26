@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Storecontext from './StoreContext';
-import { getCategories, getProducts } from '../services/getAPI';
+import { getCategories, getProductsBySearch } from '../services/getAPI';
 
 function StoreProvider({ children }) {
   // Hooks
@@ -32,7 +32,7 @@ function StoreProvider({ children }) {
 
   // requisição da api de produtos na barra de busca
   const fetchProducts = async (searchInput) => {
-    const productsList = await getProducts(searchInput);
+    const productsList = await getProductsBySearch(searchInput);
     if (productsList.results.length) {
       setProduct(productsList.results);
     } else {
