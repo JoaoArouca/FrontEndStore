@@ -5,7 +5,7 @@ import { ReactComponent as GitHub } from '../icons/gitHub.svg';
 function Footer() {
   return (
     <footer className="container">
-      <p>Feito com React, CSS, Api do Mercado Livre e 💚</p>
+      <p>Feito com React, CSS, Bootstrap, Api do Mercado Livre e 💚</p>
       <div>
         <a target="_blank" href="https://www.linkedin.com/in/joaovictorarouca/" rel="noreferrer">
           <Linkedin />

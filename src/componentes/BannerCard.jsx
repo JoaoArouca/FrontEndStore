@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from 'react-animated-slider';
+import { Carousel } from 'react-bootstrap';
 
 function BannerCard() {
   const time = 2000;
@@ -32,16 +32,19 @@ function BannerCard() {
   ];
 
   return (
-    <Slider autoplay={time}>
+    <Carousel fade interval={time}>
       {
         images.map((image) => (
-          <img
-            src={image.src}
-            alt={image.alt}
-          />
+          <Carousel.Item>
+            <img
+              src={image.src}
+              alt={image.alt}
+            />
+          </Carousel.Item>
+
         ))
       }
-    </Slider>
+    </Carousel>
   );
 }
 

@@ -9,6 +9,7 @@ import Adress from './pages/Adress';
 import Profile from './pages/Profile';
 import './App.css';
 import ShoppingCart from './pages/ShoppingCart';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
