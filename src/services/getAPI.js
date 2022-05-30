@@ -37,3 +37,15 @@ export const getProductDetails = async (productId) => { // retorna os detalhes d
   const json = await call.json();
   return json;
 };
+
+export const getPhones = async () => {
+  const call = await fetch('https://api.mercadolibre.com/sites/MLB/search?category=MLB1051');
+  const json = await call.json();
+  return json;
+};
+
+export const getEletronics = async () => {
+  const call = await fetch('https://api.mercadolibre.com/sites/MLB/search?category=MLB1051');
+  const json = await call.json();
+  return json;
+};

@@ -4,13 +4,18 @@
   box-sizing: border-box;
 }
 
+.main {
+  background-color: #ebebeb;
+}
+
 .container {
   display: flex;
 }
 
 .header {
   justify-content: space-between;
-  /* background-color: #fff159; */
+  background-color: #fff159;
+  padding: 10px;
 }
 
 .navCard {
@@ -66,4 +71,10 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+footer {
+  background-color: #fff159;
+  padding: 10px;
+  justify-content: space-evenly;
 }

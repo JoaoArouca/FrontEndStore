@@ -4,15 +4,17 @@ import CardCart from './CardCart';
 import CardLocation from './CardLocation';
 import CardProfile from './CardProfile';
 import NavCategories from './NavCategories';
+import { ReactComponent as Logo } from '../icons/logoMeli.svg';
 
 function Header() {
   const { handleInputChange, search, fetchProducts } = useContext(Storecontext);
 
   return (
     <header className="container header">
-      <NavCategories />
+
       <section className="sectionHeader container">
         <form>
+          <Logo onClick={() => window.location.reload(false)} />
           <input // formulário de pesquisa
             type="text"
             placeholder="Buscar produtos, marcas e muito mais..."
@@ -25,6 +27,7 @@ function Header() {
             Pesquisar
           </button>
         </form>
+        <NavCategories />
         <CardLocation />
         <CardProfile />
         <CardCart />

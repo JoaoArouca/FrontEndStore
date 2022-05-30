@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Storecontext from './StoreContext';
-import { getCategories, getProductsBySearch } from '../services/getAPI';
+import {
+  getCategories, getEletronics, getPhones, getProductsBySearch,
+} from '../services/getAPI';
 
 function StoreProvider({ children }) {
   // Hooks
@@ -15,10 +17,32 @@ function StoreProvider({ children }) {
   const [user, setUser] = useState(''); // nome de usuário
   const [list, setList] = useState([]); // produtos listados na main
   const [quantity, setQuantity] = useState(1); // quantidade de produtos selecionados
+  const [phones, setPhones] = useState([]); // Celulares que são renderizados na tela principal
+  const [eletronics, setEletronics] = useState([]);
 
   const handleInputChange = ({ target }) => {
     setSearch(target.value);
   };
+
+  // requisição api de celulares
+  useEffect(() => {
+    const getCel = async () => {
+      const resultado = await getPhones();
+      setPhones(resultado.results);
+    };
+
+    getCel();
+  });
+
+  // requisição api de eletronicos
+  useEffect(() => {
+    const getEletro = async () => {
+      const resultado = await getEletronics();
+      setEletronics(resultado.results);
+    };
+
+    getEletro();
+  });
 
   // requisição da api de categorias
   useEffect(() => {
@@ -63,6 +87,8 @@ function StoreProvider({ children }) {
     setList,
     quantity,
     setQuantity,
+    phones,
+    eletronics,
   };
 
   return (
