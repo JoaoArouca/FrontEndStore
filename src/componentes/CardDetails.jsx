@@ -56,7 +56,7 @@ function CardDetails({ data }) {
   };
 
   return (
-    <div>
+    <section>
       <Link to="/main">Voltar</Link>
       <div>
         <h1>{ title }</h1>
@@ -114,7 +114,7 @@ function CardDetails({ data }) {
       }
       </div>
 
-    </div>
+    </section>
   );
 }
 

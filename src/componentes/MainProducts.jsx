@@ -50,7 +50,7 @@ function MainProducts() {
               }
             </div>
           )
-          : <CardProduct data={list} />
+          : <CardProduct data={list} text="Confira" />
       }
     </div>
   );

@@ -9,6 +9,7 @@ function ProductPage() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({}); // detalhes de um produto por id
+  console.log(details);
 
   // requisição para detalhes dos produtos
   const getDetails = async (ID) => {

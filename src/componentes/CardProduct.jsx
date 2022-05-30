@@ -7,7 +7,7 @@ import Carousel from 'react-elastic-carousel';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function CardProduct({ data }) {
+function CardProduct({ data, text }) {
   const SIX = 6; // constante número 4
 
   return (
@@ -16,7 +16,7 @@ function CardProduct({ data }) {
         data.length > 0
           ? (
             <div className="carousel">
-              <h3>Confira:</h3>
+              <h3>{ text }</h3>
               <Carousel itemsToShow={SIX}>
                 {
               data.map((Prod) => {
@@ -49,6 +49,7 @@ function CardProduct({ data }) {
 
 CardProduct.propTypes = {
   data: PropTypes.arrayOf(Object).isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default CardProduct;
