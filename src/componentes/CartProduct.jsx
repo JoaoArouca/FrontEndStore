@@ -17,7 +17,7 @@ function CartProduct({ obj }) {
   }, []);
 
   return (
-    <Card style={{ width: '15px' }}>
+    <Card>
       <CardHeader>
         <CardImg src={thumbnail} />
         <CardTitle>{ title }</CardTitle>

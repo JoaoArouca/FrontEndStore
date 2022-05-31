@@ -11,9 +11,13 @@ function ShoppingCart() {
     setCart(cartProducts.cart);
   }, []);
 
+  const goBack = () => {
+    window.history.back();
+  };
+
   return (
     <div>
-      <button type="button">Voltar</button>
+      <button onClick={goBack} type="button">Voltar</button>
       <h1>Shopping Cart</h1>
       <CardGroup>
         {
