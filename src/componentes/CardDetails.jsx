@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 // camelCase disabled because the api returns an object named in underline_case
@@ -6,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  Button, Card, Carousel, Tab, Tabs,
+  Button, Card, Carousel, Tab, Tabs, Toast,
 } from 'react-bootstrap';
 import Storecontext from '../context/StoreContext';
 import { setProductIdOnStorage } from '../localStorage/localStorage';
@@ -15,7 +14,10 @@ function CardDetails({ data }) {
   // Hooks
   const { quantity, setQuantity } = useContext(Storecontext);
   const [showInput, setInputShowed] = useState(false);
+  const [showA, setShowA] = useState(false); // toast
   const navigate = useNavigate();
+
+  const toggleShowA = () => setShowA(!showA); // show n hide the toast
 
   const OffCSS = {
     color: 'green',
@@ -54,14 +56,14 @@ function CardDetails({ data }) {
   // funções de compra
   const shopNow = () => {
     const ID = window.location.pathname.split('/')[2];
-    setProductIdOnStorage(ID);
+    setProductIdOnStorage(ID, quantity);
     navigate('/shopping-cart');
   };
 
   const addToCart = () => {
     const ID = window.location.pathname.split('/')[2];
-    setProductIdOnStorage(ID);
-    alert('produto adicionado ao carrinho!');
+    setProductIdOnStorage(ID, quantity);
+    toggleShowA();
   };
 
   return (
@@ -98,6 +100,22 @@ function CardDetails({ data }) {
         <div>
           <Button variant="primary" onClick={shopNow} type="button">Comprar Agora</Button>
           <Button variant="secondary" onClick={addToCart} type="button">Adicionar ao Carrinho</Button>
+          {
+            showA && (
+            <Toast show={showA} onClose={toggleShowA}>
+              <Toast.Header>
+                <img
+                  src="holder.js/20x20?text=%20"
+                  className="rounded me-2"
+                  alt=""
+                />
+                <strong className="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+              </Toast.Header>
+              <Toast.Body>Woohoo, youre reading this text in a Toast!</Toast.Body>
+            </Toast>
+            )
+          }
         </div>
         <div>
           <span>Quantidade: </span>

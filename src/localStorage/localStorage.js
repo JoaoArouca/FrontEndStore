@@ -7,7 +7,7 @@ export const getStorage = (storageName) => {
   return JSON.parse(storage);
 };
 
-export const setProductIdOnStorage = (productId) => {
+export const setProductIdOnStorage = (productId, quantity) => {
   const storage = JSON.parse(localStorage.getItem('products')) || {
     cart: [],
   };
@@ -17,7 +17,10 @@ export const setProductIdOnStorage = (productId) => {
       ...storage,
       cart: [
         ...storage.cart,
-        productId,
+        {
+          produto: productId,
+          quantidade: quantity,
+        },
       ],
     },
   ));
