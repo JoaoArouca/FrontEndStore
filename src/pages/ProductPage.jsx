@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // método para pegar o Params no react router v6
 import CardDetails from '../componentes/CardDetails';
 import { getProductDetails } from '../services/getAPI';
+import Header from '../componentes/Header';
+import Footer from '../componentes/Footer';
 
 function ProductPage() {
   const { id } = useParams();
@@ -24,12 +26,14 @@ function ProductPage() {
 
   return (
     <div>
+      <Header />
       {
         loading ? <span>Loading...</span> : null
       }
       {
         details && <CardDetails data={details} />
       }
+      <Footer />
     </div>
   );
 }

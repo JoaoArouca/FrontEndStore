@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Storecontext from '../context/StoreContext';
 import CardCart from './CardCart';
 import CardLocation from './CardLocation';
@@ -8,13 +9,16 @@ import { ReactComponent as Logo } from '../icons/logoMeli.svg';
 
 function Header() {
   const { handleInputChange, search, fetchProducts } = useContext(Storecontext);
+  const navigate = useNavigate();
 
   return (
     <header className="container header">
 
       <section className="sectionHeader container">
         <form>
-          <Logo onClick={() => window.location.reload(false)} />
+          <Link to="/main">
+            <Logo />
+          </Link>
           <input // formulário de pesquisa
             type="text"
             placeholder="Buscar produtos, marcas e muito mais..."
@@ -22,7 +26,10 @@ function Header() {
           />
           <button
             type="button"
-            onClick={() => fetchProducts(search)}
+            onClick={() => {
+              navigate('/main');
+              fetchProducts(search);
+            }}
           >
             Pesquisar
           </button>

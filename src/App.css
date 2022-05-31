@@ -16,6 +16,7 @@
   justify-content: space-between;
   background-color: #fff159;
   padding: 10px;
+  width: 100vw;
 }
 
 .navCard {
@@ -44,7 +45,7 @@
 
 .productSection {
   flex-wrap: wrap;
-  border: 1px black;
+  /* border: 1px black; */
 }
 
 .productCard {
